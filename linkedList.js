@@ -24,6 +24,16 @@ function createLinkedList () {
     }
   };
 
+  const getSize = () => {
+    let count = 0;
+    let countNode = head;
+    while (countNode !== null) {
+      countNode = countNode.nextNode;
+      count += 1;
+    }
+    return count;
+  };
+
   const getHead = () => {
     return head.value;
   };
@@ -35,6 +45,7 @@ function createLinkedList () {
   return {
     append,
     prepend,
+    getSize,
     getHead,
     getTail
   };
@@ -60,3 +71,4 @@ list.prepend('mark');
 list.append('tim');
 console.log(list.getHead());
 console.log(list.getTail());
+console.log(list.getSize());
