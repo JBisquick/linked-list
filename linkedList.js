@@ -91,6 +91,17 @@ function createLinkedList () {
     return listString;
   }
 
+  const insertAt = (index, value) => {
+    if (index === 0) {
+      prepend(value);
+    } else {
+      const beforeNode = at(index - 1);
+      const afterNode = at(index)
+      const newNode = createNode(value, afterNode);
+      beforeNode.nextNode = newNode;
+    }
+  }
+
   return {
     append,
     prepend,
@@ -101,7 +112,8 @@ function createLinkedList () {
     pop,
     contains,
     find,
-    toString
+    toString,
+    insertAt
   };
 }
 
@@ -134,4 +146,6 @@ console.log(list.contains('marlin'));
 console.log(list.contains('mary'));
 console.log(list.find('mark'));
 console.log(list.find('mary'));
+console.log(list.toString());
+list.insertAt(2, 'marlin');
 console.log(list.toString());
