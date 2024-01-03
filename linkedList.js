@@ -80,6 +80,17 @@ function createLinkedList () {
     return null;
   }
 
+  const toString = () => {
+    let node = head;
+    let listString = '';
+    while (node !== null) {
+      listString += `( ${node.value} ) -> `;
+      node = node.nextNode;
+    }
+    listString += 'null'
+    return listString;
+  }
+
   return {
     append,
     prepend,
@@ -89,7 +100,8 @@ function createLinkedList () {
     at,
     pop,
     contains,
-    find
+    find,
+    toString
   };
 }
 
@@ -122,3 +134,4 @@ console.log(list.contains('marlin'));
 console.log(list.contains('mary'));
 console.log(list.find('mark'));
 console.log(list.find('mary'));
+console.log(list.toString());
