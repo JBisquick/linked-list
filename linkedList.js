@@ -54,13 +54,20 @@ function createLinkedList () {
     return node;
   }
 
+  const pop = () => {
+    let lastNode = at(getSize() - 2);
+    lastNode.nextNode = null;
+    tail = lastNode;
+  }
+
   return {
     append,
     prepend,
     getSize,
     getHead,
     getTail,
-    at
+    at,
+    pop
   };
 }
 
@@ -83,7 +90,9 @@ list.append('mary');
 list.prepend('mark');
 list.append('tim');
 console.log(list.getHead());
-console.log(list.at(1));
-console.log(list.at(2));
+console.log(list.at(0));
+console.log(list.getTail());
+console.log(list.getSize());
+list.pop();
 console.log(list.getTail());
 console.log(list.getSize());
