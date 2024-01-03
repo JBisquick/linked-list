@@ -13,6 +13,17 @@ function createLinkedList () {
     }
   }; 
 
+  const prepend = (value) => {
+    const newNode = createNode(value);
+    if (head === null) {
+      head = newNode;
+      tail = newNode;
+    } else {
+      newNode.nextNode = head;
+      head = newNode;
+    }
+  };
+
   const getHead = () => {
     return head.value;
   };
@@ -23,6 +34,7 @@ function createLinkedList () {
 
   return {
     append,
+    prepend,
     getHead,
     getTail
   };
@@ -44,6 +56,7 @@ function createNode (value = undefined, nextNode = null) {
 let list = createLinkedList();
 list.append('bob');
 list.append('mary');
+list.prepend('mark');
 list.append('tim');
 console.log(list.getHead());
 console.log(list.getTail());
