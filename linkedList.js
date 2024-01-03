@@ -60,6 +60,15 @@ function createLinkedList () {
     tail = lastNode;
   }
 
+  const contains = (value) => {
+    let node = head;
+    while (node !== null) {
+      if (node.value === value) return true;
+      node = node.nextNode;
+    }
+    return false;
+  }
+
   return {
     append,
     prepend,
@@ -67,7 +76,8 @@ function createLinkedList () {
     getHead,
     getTail,
     at,
-    pop
+    pop,
+    contains
   };
 }
 
@@ -96,3 +106,5 @@ console.log(list.getSize());
 list.pop();
 console.log(list.getTail());
 console.log(list.getSize());
+console.log(list.contains('marlin'));
+console.log(list.contains('mary'));
