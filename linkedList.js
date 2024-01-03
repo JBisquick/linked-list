@@ -102,6 +102,18 @@ function createLinkedList () {
     }
   }
 
+  const removeAt = (index) => {
+    if (index === 0) {
+      const removedNode = head;
+      head = removedNode.nextNode;
+      removedNode.nextNode = null;
+    } else {
+      const beforeNode = at(index - 1);
+      const afterNode = at(index + 1)
+      beforeNode.nextNode = afterNode;
+    }
+  }
+
   return {
     append,
     prepend,
@@ -113,7 +125,8 @@ function createLinkedList () {
     contains,
     find,
     toString,
-    insertAt
+    insertAt,
+    removeAt
   };
 }
 
@@ -148,4 +161,6 @@ console.log(list.find('mark'));
 console.log(list.find('mary'));
 console.log(list.toString());
 list.insertAt(2, 'marlin');
+console.log(list.toString());
+list.removeAt(3);
 console.log(list.toString());
