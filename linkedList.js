@@ -35,19 +35,32 @@ function createLinkedList () {
   };
 
   const getHead = () => {
+    if (head === null) return null;
     return head.value;
   };
 
   const getTail = () => {
+    if (tail === null) return null;
     return tail.value;
   };
+
+  const at = (index) => {
+    let count = 0;
+    let node = head;
+    while (count < index) {
+      node = node.nextNode;
+      count += 1;
+    }
+    return node;
+  }
 
   return {
     append,
     prepend,
     getSize,
     getHead,
-    getTail
+    getTail,
+    at
   };
 }
 
@@ -70,5 +83,7 @@ list.append('mary');
 list.prepend('mark');
 list.append('tim');
 console.log(list.getHead());
+console.log(list.at(1));
+console.log(list.at(2));
 console.log(list.getTail());
 console.log(list.getSize());
